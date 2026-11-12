@@ -2,30 +2,31 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def _matriz(grid):
+    """Converte o Grid numa matriz numpy: 0 = obstáculo, 1..9 = custo."""
+    return np.array([[0 if v is None else v for v in linha] for linha in grid.cost])
 
 def mostrar(grid, caminho, explorados, inicio, fim, titulo="", ax=None):
     """Mapa com: custos (castanho), explorados (azul), caminho (vermelho)."""
+    mapa = _matriz(grid)
     if ax is None:
         _, ax = plt.subplots(figsize=(6, 6))
     cmap = plt.cm.YlOrBr.copy()
     cmap.set_bad("black")                        # obstáculos a preto
-    # mais escuro = terreno mais caro
-    ax.imshow(np.ma.masked_where(grid == 0, grid), cmap=cmap, vmin=1, vmax=9)
+    ax.imshow(np.ma.masked_where(mapa == 0, mapa), cmap=cmap, vmin=1, vmax=9)
     if explorados:
-        m = np.zeros(grid.shape)                 # marca os nós explorados
+        m = np.zeros(mapa.shape)                 # marca os nós explorados
         for r, c in explorados:
             m[r, c] = 1
         ax.imshow(np.ma.masked_where(m == 0, m), cmap="Blues", alpha=0.5, vmin=0, vmax=1.5)
     if caminho:
-        # x = coluna, y = linha
         ax.plot([p[1] for p in caminho], [p[0] for p in caminho], color="red", lw=2)
-    ax.plot(inicio[1], inicio[0], "go", ms=8)    # S: círculo verde
-    ax.plot(fim[1], fim[0], "r*", ms=12)         # G: estrela vermelha
+    ax.plot(inicio[1], inicio[0], "go", ms=8)    # S
+    ax.plot(fim[1], fim[0], "r*", ms=12)         # G
     ax.set_title(titulo, fontsize=10)
     ax.set_xticks([])
     ax.set_yticks([])
     return ax
-
 
 def grafico_expandidos(df, direcoes=4, ax=None):
     """Barras com os nós expandidos por cenário (escala log)."""
