@@ -5,7 +5,7 @@ Trabalho 2 de Inteligencia Artificial (UC 90498), ESTGA, Universidade de Aveiro.
 Planeador de trajetos em grelha 2D com Dijkstra, A* e Weighted A*, em 4 e 8
 direcoes, com varias heuristicas e 6 cenarios de teste.
 
-Autores: Nome 1 (n. 00000) e Nome 2 (n. 00000)
+Autores: Jéssica Pereira (n. 76147) e Nádia Bento (n. 124533)
 
 ## REQUISITOS
 
@@ -73,8 +73,15 @@ PathFinder-AI/
 
 ## EXTENSAO
 
-Weighted A\*: estudo do compromisso entre qualidade do caminho e rapidez ao
-variar o peso da heuristica (seccao 5 do notebook).
+Weighted A\*: estudo sistematico do compromisso entre qualidade do caminho e
+rapidez, variando o peso w da heuristica (f = g + w * h).
+
+- Implementacao: parametro `weight` da funcao `search` em `planner/search.py`
+  (com w = 1 e uma heuristica admissivel, o A* continua otimo).
+- Estudo: seccoes 5 e 6 do notebook, com pesos 1, 1.2, 1.5, 2, 3 e 5 e a
+  heuristica de Manhattan (4 direcoes), nos tres cenarios grandes.
+- Resultados: tabela em `results/tables/pesos.csv` e graficos
+  `results/figures/peso_*.png`.
 
 ## DECLARACAO DE USO DE IA GENERATIVA
 
