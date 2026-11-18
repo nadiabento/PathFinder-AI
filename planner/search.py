@@ -1,19 +1,4 @@
-"""Dijkstra e A* próprios, sobre uma única implementação (secção 4.1).
-
-Dijkstra é A* com h = 0; Weighted A* é A* com f = g + w*h. Manter um só ciclo evita
-duplicar código e garante que as comparações entre algoritmos medem a mesma coisa.
-
-Escolhas de implementação (úteis para o relatório/defesa)
----------------------------------------------------------
-* Fila de prioridade: heapq com entradas (f, h, contador, nó). Desempate: menor h primeiro
-  (prefere nós mais perto do objetivo) e depois ordem de inserção (determinístico).
-* Remoção preguiçosa: em vez de decrease-key, empurra-se uma nova entrada e ignoram-se as
-  entradas obsoletas (nós já expandidos). Complexidade O(E log V).
-* Conjunto `closed`: cada nó é expandido no máximo uma vez. É isto que impede ciclos e garante
-  que o Cenário C termina: quando a fronteira esvazia, não há caminho.
-* "Nós expandidos" = nós retirados da fronteira e processados (o do objetivo conta, porque
-  é retirado antes de se parar). Os valores exatos dependem do desempate.
-"""
+"""Dijkstra e A* próprios, sobre uma única implementação."""
 from __future__ import annotations
 
 import heapq
@@ -29,6 +14,10 @@ Pos = tuple[int, int]
 Heuristic = Callable[[Pos, Pos], float]
 
 
+# CLASSE SearchResult
+# O que guarda: tudo o que uma pesquisa devolve (encontrou?, caminho, custo,
+#               nós expandidos, nós gerados, pico da fronteira, tempo, ordem de expansão).
+# Para quê: o correr() e os gráficos leem estes campos.
 @dataclass
 class SearchResult:
     found: bool
@@ -43,6 +32,8 @@ class SearchResult:
     moves: int = 4
     weight: float = 1.0
 
+    # __str__
+    # O que faz: define o texto que aparece com print(resultado).
     def __str__(self) -> str:
         if not self.found:
             return f"{self.algorithm}: sem caminho (expandidos={self.expanded})"
@@ -50,13 +41,24 @@ class SearchResult:
                 f"expandidos={self.expanded} tempo={self.time_s * 1000:.3f} ms")
 
 
+# search  (o coração do projeto: um só ciclo para Dijkstra, A* e Weighted A*)
+# O que faz: encontra o caminho de menor custo de grid.start a grid.goal.
+# Recebe:    a grelha, 4 ou 8 direções, a heurística (None = Dijkstra) e o peso w.
+# Devolve:   um SearchResult.
+# Prioridade: f = g + w*h (com h = 0, f = g e é o Dijkstra).
+# Estruturas: frontier = heap de (f, h, contador, nó) -> desempata pelo menor h
+#             g_best   = melhor custo conhecido até cada nó
+#             parent   = de onde veio cada nó (para reconstruir o caminho)
+#             closed   = nós já expandidos (nunca se expande um nó duas vezes)
+# Passos do ciclo:
+#   1) tira da fronteira o nó com menor f;
+#   2) se já foi expandido (entrada obsoleta), ignora-o;
+#   3) marca-o como expandido; se é o objetivo, para;
+#   4) para cada vizinho, se encontrou um caminho mais barato, atualiza e põe na fronteira;
+#   5) se a fronteira esvaziar, não há caminho (é assim que o cenário C termina).
 def search(grid: Grid, moves: int = 4, heuristic: Heuristic | None = None,
            weight: float = 1.0, name: str | None = None) -> SearchResult:
-    """Pesquisa de custo mínimo de grid.start a grid.goal.
-
-    heuristic=None -> Dijkstra. Com heurística -> A* (f = g + weight*h).
-    weight == 1 com heurística admissível e consistente garante optimalidade.
-    """
+    """Pesquisa de custo mínimo de grid.start a grid.goal."""
     if weight < 1:
         raise ValueError("weight tem de ser >= 1")
     h = heuristic if heuristic is not None else (lambda a, b: 0.0)
@@ -117,13 +119,20 @@ def search(grid: Grid, moves: int = 4, heuristic: Heuristic | None = None,
                         explored=explored, algorithm=name, moves=moves, weight=weight)
 
 
+# dijkstra
+# O que faz: Dijkstra = a mesma pesquisa sem heurística.
+# Recebe:    a grelha e 4 ou 8 direções.  Devolve: um SearchResult.
 def dijkstra(grid: Grid, moves: int = 4) -> SearchResult:
     return search(grid, moves, heuristic=None)
 
 
+# astar
+# O que faz: A* = a mesma pesquisa com heurística (e peso opcional, para o Weighted A*).
+#            Se não indicares heurística, usa Manhattan em 4 direções e Octile em 8.
+# Recebe:    a grelha, 4 ou 8 direções, a heurística, o peso e um nome opcional.
+# Devolve:   um SearchResult.
 def astar(grid: Grid, moves: int = 4, heuristic: Heuristic | None = None,
           weight: float = 1.0, heuristic_name: str | None = None) -> SearchResult:
-    """A*. Por omissão usa Manhattan (4 dir.) ou octile (8 dir.), as mais informadas admissíveis."""
     from .heuristics import manhattan, octile
     if heuristic is None:
         heuristic = manhattan if moves == 4 else octile
