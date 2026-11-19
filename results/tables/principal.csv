@@ -1,61 +1,61 @@
 cenario,direcoes,algoritmo,heuristica,w,custo,expandidos,gerados,fronteira_max,tempo_ms,passos,otimo,gap_pct
-A labirinto,4,Dijkstra,-,1,17.0,34,35,2,0.1943600014783442,17.0,True,0.0
-A labirinto,4,A*,Manhattan,1,17.0,27,28,2,0.14921999536454678,17.0,True,0.0
-A labirinto,4,A*,Euclidiana,1,17.0,27,28,2,0.14090000186115503,17.0,True,0.0
-A labirinto,4,A*,Chebyshev,1,17.0,27,28,2,0.20781999919563532,17.0,True,0.0
-A labirinto,4,A*,Octile,1,17.0,27,28,2,0.1936199958436191,17.0,True,0.0
-A labirinto,8,Dijkstra,-,1,17.0,34,35,2,0.31145999673753977,17.0,True,0.0
-A labirinto,8,A*,Manhattan,1,17.0,27,28,2,0.1904600067064166,17.0,True,0.0
-A labirinto,8,A*,Euclidiana,1,17.0,27,28,2,0.2697999938391149,17.0,True,0.0
-A labirinto,8,A*,Chebyshev,1,17.0,27,28,2,0.24270000867545605,17.0,True,0.0
-A labirinto,8,A*,Octile,1,17.0,27,28,2,0.21299999207258224,17.0,True,0.0
-B terrenos,4,Dijkstra,-,1,20.0,30,31,5,0.16327999765053391,12.0,True,0.0
-B terrenos,4,A*,Manhattan,1,20.0,28,30,5,0.1475800178013742,20.0,True,0.0
-B terrenos,4,A*,Euclidiana,1,20.0,29,30,6,0.1640800037421286,20.0,True,0.0
-B terrenos,4,A*,Chebyshev,1,20.0,29,30,6,0.15928000211715698,20.0,True,0.0
-B terrenos,4,A*,Octile,1,20.0,29,30,6,0.1742199994623661,20.0,True,0.0
-B terrenos,8,Dijkstra,-,1,18.8284,30,34,9,0.2424800070002675,18.0,True,0.0
-B terrenos,8,A*,Manhattan,1,18.8284,25,33,10,0.2174199908040464,18.0,True,0.0
-B terrenos,8,A*,Euclidiana,1,18.8284,28,33,11,0.24127999786287546,18.0,True,0.0
-B terrenos,8,A*,Chebyshev,1,18.8284,28,33,11,0.24016000097617507,18.0,True,0.0
-B terrenos,8,A*,Octile,1,18.8284,27,33,11,0.2461399999447167,18.0,True,0.0
-C sem caminho,4,Dijkstra,-,1,inf,6,6,2,0.03378000110387802,,True,
-C sem caminho,4,A*,Manhattan,1,inf,6,7,2,0.037180003710091114,,True,
-C sem caminho,4,A*,Euclidiana,1,inf,6,6,3,0.03423999296501279,,True,
-C sem caminho,4,A*,Chebyshev,1,inf,6,6,3,0.034360005520284176,,True,
-C sem caminho,4,A*,Octile,1,inf,6,6,3,0.0724000041373074,,True,
-C sem caminho,8,Dijkstra,-,1,inf,6,6,3,0.10630000615492463,,True,
-C sem caminho,8,A*,Manhattan,1,inf,6,7,4,0.08335999445989728,,True,
-C sem caminho,8,A*,Euclidiana,1,inf,6,7,4,0.08033999474719167,,True,
-C sem caminho,8,A*,Chebyshev,1,inf,6,6,4,0.09135999716818333,,True,
-C sem caminho,8,A*,Octile,1,inf,6,7,4,0.5694400169886649,,True,
-Labirinto 51x51,4,Dijkstra,-,1,176.0,1171,1175,19,7.9241199884563684,176.0,True,0.0
-Labirinto 51x51,4,A*,Manhattan,1,176.0,855,885,20,4.3508200091309845,176.0,True,0.0
-Labirinto 51x51,4,A*,Euclidiana,1,176.0,969,984,18,5.958359991200268,176.0,True,0.0
-Labirinto 51x51,4,A*,Chebyshev,1,176.0,993,1016,20,6.114919995889068,176.0,True,0.0
-Labirinto 51x51,4,A*,Octile,1,176.0,960,984,20,5.171120015438646,176.0,True,0.0
-Labirinto 51x51,8,Dijkstra,-,1,176.0,1171,1175,19,8.465099986642599,176.0,True,0.0
-Labirinto 51x51,8,A*,Manhattan,1,176.0,855,885,20,5.869860004168004,176.0,True,0.0
-Labirinto 51x51,8,A*,Euclidiana,1,176.0,969,984,18,8.109739993233234,176.0,True,0.0
-Labirinto 51x51,8,A*,Chebyshev,1,176.0,993,1016,20,6.562560016755015,176.0,True,0.0
-Labirinto 51x51,8,A*,Octile,1,176.0,960,984,20,7.002599991392344,176.0,True,0.0
-Aberto 100x100,4,Dijkstra,-,1,198.0,8799,8799,102,50.29532000189647,198.0,True,0.0
-Aberto 100x100,4,A*,Manhattan,1,198.0,566,1029,464,3.2647599931806326,198.0,True,0.0
-Aberto 100x100,4,A*,Euclidiana,1,198.0,8458,8631,176,48.319220007397234,198.0,True,0.0
-Aberto 100x100,4,A*,Chebyshev,1,198.0,8459,9196,203,54.217800009064376,198.0,True,0.0
-Aberto 100x100,4,A*,Octile,1,198.0,8381,9121,238,55.83394002169371,198.0,True,0.0
-Aberto 100x100,8,Dijkstra,-,1,153.4802,8799,9044,173,96.15307999774814,122.0,True,0.0
-Aberto 100x100,8,A*,Manhattan,1,158.1665,161,472,312,1.667699997778982,130.0,False,3.053351873664519
-Aberto 100x100,8,A*,Euclidiana,1,153.4802,4061,6423,561,65.41227999841794,122.0,True,0.0
-Aberto 100x100,8,A*,Chebyshev,1,153.4802,5282,9410,491,67.1585000003688,122.0,True,0.0
-Aberto 100x100,8,A*,Octile,1,153.4802,2691,4737,651,32.967240014113486,122.0,True,1.8518156568636806e-14
-Custos variados,4,Dijkstra,-,1,66.0,1013,1065,69,5.157479993067682,55.0,True,0.0
-Custos variados,4,A*,Manhattan,1,66.0,371,511,104,2.0158999948762357,55.0,True,0.0
-Custos variados,4,A*,Euclidiana,1,66.0,584,712,129,3.886440023779869,55.0,True,0.0
-Custos variados,4,A*,Chebyshev,1,66.0,638,775,128,3.356439992785454,55.0,True,0.0
-Custos variados,4,A*,Octile,1,66.0,496,618,119,4.114719992503524,55.0,True,0.0
-Custos variados,8,Dijkstra,-,1,54.2843,988,1239,154,12.228319991845638,41.0,True,0.0
-Custos variados,8,A*,Manhattan,1,54.2843,261,650,215,4.733959992881864,41.0,True,0.0
-Custos variados,8,A*,Euclidiana,1,54.2843,395,697,213,4.422339994926006,41.0,True,0.0
-Custos variados,8,A*,Chebyshev,1,54.2843,452,1059,238,7.101820013485849,41.0,True,0.0
-Custos variados,8,A*,Octile,1,54.2843,330,803,223,4.8750200076028705,41.0,True,0.0
+A labirinto,4,Dijkstra,-,1,17.0,34,35,2,0.134680001065135,17.0,True,0.0
+A labirinto,4,A*,Manhattan,1,17.0,27,28,2,0.11159998830407858,17.0,True,0.0
+A labirinto,4,A*,Euclidiana,1,17.0,27,28,2,0.10869998950511217,17.0,True,0.0
+A labirinto,4,A*,Chebyshev,1,17.0,27,28,2,0.09926001075655222,17.0,True,0.0
+A labirinto,4,A*,Octile,1,17.0,27,28,2,0.10015999432653189,17.0,True,0.0
+A labirinto,8,Dijkstra,-,1,17.0,34,35,2,0.15078000724315643,17.0,True,0.0
+A labirinto,8,A*,Manhattan,1,17.0,27,28,2,0.12696001213043928,17.0,True,0.0
+A labirinto,8,A*,Euclidiana,1,17.0,27,28,2,0.09990001562982798,17.0,True,0.0
+A labirinto,8,A*,Chebyshev,1,17.0,27,28,2,0.0833400059491396,17.0,True,0.0
+A labirinto,8,A*,Octile,1,17.0,27,28,2,0.08865999989211559,17.0,True,0.0
+B terrenos,4,Dijkstra,-,1,20.0,30,31,5,0.07121998351067305,12.0,True,0.0
+B terrenos,4,A*,Manhattan,1,20.0,28,30,5,0.11342000216245651,20.0,True,0.0
+B terrenos,4,A*,Euclidiana,1,20.0,29,30,6,0.13564000837504864,20.0,True,0.0
+B terrenos,4,A*,Chebyshev,1,20.0,29,30,6,0.2192400163039565,20.0,True,0.0
+B terrenos,4,A*,Octile,1,20.0,29,30,6,0.23129999171942472,20.0,True,0.0
+B terrenos,8,Dijkstra,-,1,18.8284,30,34,9,0.1758200116455555,18.0,True,0.0
+B terrenos,8,A*,Manhattan,1,18.8284,25,33,10,0.16174002084881067,18.0,True,0.0
+B terrenos,8,A*,Euclidiana,1,18.8284,28,33,11,0.1541400095447898,18.0,True,0.0
+B terrenos,8,A*,Chebyshev,1,18.8284,28,33,11,0.1743400003761053,18.0,True,0.0
+B terrenos,8,A*,Octile,1,18.8284,27,33,11,0.22714000660926104,18.0,True,0.0
+C sem caminho,4,Dijkstra,-,1,inf,6,6,2,0.02881998661905527,,True,
+C sem caminho,4,A*,Manhattan,1,inf,6,7,2,0.03559999167919159,,True,
+C sem caminho,4,A*,Euclidiana,1,inf,6,6,3,0.03037999849766493,,True,
+C sem caminho,4,A*,Chebyshev,1,inf,6,6,3,0.03214001189917326,,True,
+C sem caminho,4,A*,Octile,1,inf,6,6,3,0.031860009767115116,,True,
+C sem caminho,8,Dijkstra,-,1,inf,6,6,3,0.04508001729846001,,True,
+C sem caminho,8,A*,Manhattan,1,inf,6,7,4,0.0467600068077445,,True,
+C sem caminho,8,A*,Euclidiana,1,inf,6,7,4,0.04613997880369425,,True,
+C sem caminho,8,A*,Chebyshev,1,inf,6,6,4,0.04602000117301941,,True,
+C sem caminho,8,A*,Octile,1,inf,6,7,4,0.04781999159604311,,True,
+Labirinto 51x51,4,Dijkstra,-,1,176.0,1171,1175,19,4.171179980039597,176.0,True,0.0
+Labirinto 51x51,4,A*,Manhattan,1,176.0,855,885,20,2.5712799979373813,176.0,True,0.0
+Labirinto 51x51,4,A*,Euclidiana,1,176.0,969,984,18,2.5430400390177965,176.0,True,0.0
+Labirinto 51x51,4,A*,Chebyshev,1,176.0,993,1016,20,3.0672799795866013,176.0,True,0.0
+Labirinto 51x51,4,A*,Octile,1,176.0,960,984,20,3.6512800026685,176.0,True,0.0
+Labirinto 51x51,8,Dijkstra,-,1,176.0,1171,1175,19,5.323680001311004,176.0,True,0.0
+Labirinto 51x51,8,A*,Manhattan,1,176.0,855,885,20,4.218340013176203,176.0,True,0.0
+Labirinto 51x51,8,A*,Euclidiana,1,176.0,969,984,18,4.656059993430972,176.0,True,0.0
+Labirinto 51x51,8,A*,Chebyshev,1,176.0,993,1016,20,4.431820008903742,176.0,True,0.0
+Labirinto 51x51,8,A*,Octile,1,176.0,960,984,20,3.822880005463958,176.0,True,0.0
+Aberto 100x100,4,Dijkstra,-,1,198.0,8799,8799,102,28.439140017144382,198.0,True,0.0
+Aberto 100x100,4,A*,Manhattan,1,198.0,566,1029,464,2.624599984847009,198.0,True,0.0
+Aberto 100x100,4,A*,Euclidiana,1,198.0,8458,8631,176,32.5044599827379,198.0,True,0.0
+Aberto 100x100,4,A*,Chebyshev,1,198.0,8459,9196,203,34.380679996684194,198.0,True,0.0
+Aberto 100x100,4,A*,Octile,1,198.0,8381,9121,238,43.40536000672728,198.0,True,0.0
+Aberto 100x100,8,Dijkstra,-,1,153.4802,8799,9044,173,76.85932000167668,122.0,True,0.0
+Aberto 100x100,8,A*,Manhattan,1,158.1665,161,472,312,1.8413200043141842,130.0,False,3.053351873664519
+Aberto 100x100,8,A*,Euclidiana,1,153.4802,4061,6423,561,36.993160005658865,122.0,True,0.0
+Aberto 100x100,8,A*,Chebyshev,1,153.4802,5282,9410,491,44.582340004853904,122.0,True,0.0
+Aberto 100x100,8,A*,Octile,1,153.4802,2691,4737,651,25.65371999517083,122.0,True,1.8518156568636806e-14
+Custos variados,4,Dijkstra,-,1,66.0,1013,1065,69,4.334439989179373,55.0,True,0.0
+Custos variados,4,A*,Manhattan,1,66.0,371,511,104,1.4784399885684252,55.0,True,0.0
+Custos variados,4,A*,Euclidiana,1,66.0,584,712,129,2.7778400108218193,55.0,True,0.0
+Custos variados,4,A*,Chebyshev,1,66.0,638,775,128,2.6122800074517727,55.0,True,0.0
+Custos variados,4,A*,Octile,1,66.0,496,618,119,2.0714200101792812,55.0,True,0.0
+Custos variados,8,Dijkstra,-,1,54.2843,988,1239,154,9.387280023656785,41.0,True,0.0
+Custos variados,8,A*,Manhattan,1,54.2843,261,650,215,2.701659989543259,41.0,True,0.0
+Custos variados,8,A*,Euclidiana,1,54.2843,395,697,213,3.449340001679957,41.0,True,0.0
+Custos variados,8,A*,Chebyshev,1,54.2843,452,1059,238,3.8704799953848124,41.0,True,0.0
+Custos variados,8,A*,Octile,1,54.2843,330,803,223,3.031660011038184,41.0,True,0.0

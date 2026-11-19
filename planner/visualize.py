@@ -1,6 +1,7 @@
 """Desenha os mapas e os gráficos."""
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.colors import ListedColormap
 
 def _matriz(grid):
     """Converte o Grid numa matriz numpy: 0 = obstáculo, 1..9 = custo."""
@@ -9,6 +10,10 @@ def _matriz(grid):
 COR_S = "#2e9e5b"      # verde: início (S)
 COR_G = "#7b2cbf"      # roxo: objetivo (G)
 COR_OBSTACULO = "#2b2f3a"
+# cor de cada custo (índice = custo): 1 = cinzento-claro neutro, 2..9 = laranja que escurece
+CORES_CUSTO = ["#2b2f3a", "#eceff3", "#ffe3bf", "#ffcf99", "#ffb870", "#ff9f45",
+               "#f77f1d", "#d35a0a", "#a63f06", "#5e2204"]
+CMAP_CUSTO = ListedColormap(CORES_CUSTO)
 
 
 def _marca(ax, pos, letra, cor, tam):
@@ -26,9 +31,10 @@ def mostrar(grid, caminho, explorados, inicio, fim, titulo="", ax=None):
     grande = max(R, C)
     if ax is None:
         _, ax = plt.subplots(figsize=(6, 6))
-    cmap = plt.cm.YlOrBr.copy()
+    cmap = CMAP_CUSTO.copy()
     cmap.set_bad(COR_OBSTACULO)                  # obstáculos
-    ax.imshow(np.ma.masked_where(mapa == 0, mapa), cmap=cmap, vmin=0, vmax=9)
+    ax.imshow(np.ma.masked_where(mapa == 0, mapa), cmap=cmap, vmin=-0.5, vmax=9.5,
+              interpolation="nearest")
     if explorados:
         m = np.zeros(mapa.shape)                 # marca os nós explorados
         for r, c in explorados:
@@ -37,13 +43,13 @@ def mostrar(grid, caminho, explorados, inicio, fim, titulo="", ax=None):
     if grande <= 15:                             # mapas pequenos: grelha e custos visíveis
         ax.set_xticks(np.arange(-0.5, C, 1), minor=True)
         ax.set_yticks(np.arange(-0.5, R, 1), minor=True)
-        ax.grid(which="minor", color="white", lw=1.2)
+        ax.grid(which="minor", color="#9aa3ad", lw=1.0)
         for r in range(R):
             for c in range(C):
                 if mapa[r, c] > 1:
                     ax.text(c, r, int(mapa[r, c]), ha="center", va="center",
                             fontsize=11, fontweight="bold",
-                            color="white" if mapa[r, c] >= 6 else "#3b2300")
+                            color="white" if mapa[r, c] >= 7 else "#3b2300")
     ax.tick_params(which="minor", length=0)
     if caminho:
         ax.plot([p[1] for p in caminho], [p[0] for p in caminho], color="red", lw=2, zorder=4)
@@ -70,14 +76,13 @@ def mostrar_cenarios(cenarios, colunas=3):
         mostrar(g, None, None, g.start, g.goal, f"{nome}  ({g.rows}×{g.cols})", ax)
     for ax in axs[n:]:
         ax.axis("off")
-    cmap = plt.cm.YlOrBr
     legenda = [
         Patch(fc=COR_S, ec="white", label="S = início"),
         Patch(fc=COR_G, ec="white", label="G = objetivo"),
         Patch(fc=COR_OBSTACULO, label="Obstáculo (não se atravessa)"),
-        Patch(fc=cmap(1 / 9), label="Custo 1 (livre)"),
-        Patch(fc=cmap(5 / 9), label="Custo médio (3 a 5)"),
-        Patch(fc=cmap(9 / 9), label="Custo 9 (muito caro)"),
+        Patch(fc=CORES_CUSTO[1], ec="#9aa3ad", label="Custo 1 (livre)"),
+        Patch(fc=CORES_CUSTO[4], label="Custo 2 a 5 (médio)"),
+        Patch(fc=CORES_CUSTO[9], label="Custo 9 (muito caro)"),
     ]
     fig.legend(handles=legenda, loc="lower center", ncol=6, frameon=False, fontsize=10)
     fig.suptitle("Os 6 cenários de teste", fontsize=14, fontweight="bold")
